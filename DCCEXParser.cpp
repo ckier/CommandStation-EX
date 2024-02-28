@@ -996,16 +996,16 @@ bool DCCEXParser::parseD(Print *stream, int16_t params, int16_t p[])
 	if (params >= 3) {
 	    if (p[1] == HASH_KEYWORD_LIMIT) {
 	      DCCACK::setAckLimit(p[2]);
-	      LCD(1, F("Ack Limit=%dmA"), p[2]);  // <D ACK LIMIT 42>
+	      LCD(6, F("Ack Limit=%dmA"), p[2]);  // <D ACK LIMIT 42>
 	    } else if (p[1] == HASH_KEYWORD_MIN) {
 	      DCCACK::setMinAckPulseDuration(p[2]);
-	      LCD(0, F("Ack Min=%uus"), p[2]);  //   <D ACK MIN 1500>
+	      LCD(7, F("Ack Min=%uus"), p[2]);  //   <D ACK MIN 1500>
 	    } else if (p[1] == HASH_KEYWORD_MAX) {
 	      DCCACK::setMaxAckPulseDuration(p[2]);
-	      LCD(0, F("Ack Max=%uus"), p[2]);  //   <D ACK MAX 9000>
+	      LCD(7, F("Ack Max=%uus"), p[2]);  //   <D ACK MAX 9000>
 	    } else if (p[1] == HASH_KEYWORD_RETRY) {
 	      if (p[2] >255) p[2]=3;
-	      LCD(0, F("Ack Retry=%d Sum=%d"), p[2], DCCACK::setAckRetry(p[2]));  //   <D ACK RETRY 2>
+	      LCD(7, F("Ack Retry=%d Sum=%d"), p[2], DCCACK::setAckRetry(p[2]));  //   <D ACK RETRY 2>
 	    }
 	} else {
 	  StringFormatter::send(stream, F("Ack diag %S\n"), onOff ? F("on") : F("off"));
